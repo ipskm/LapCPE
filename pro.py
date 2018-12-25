@@ -9,10 +9,10 @@ import serial
 import csv
 
 #define global variable
-livingroom_var = 0 ; fire_lr = 0 ; ldr_lr = 0
-bedroom_var = 0 ; fire_bd = 0 ; ldr_bd = 0
-kitchen_var = 0 ; fire_kc = 0 ; ldr_kt = 0
-bathroom_var = 0 ; fire_br = 0 ; ldr_br = 0
+livingroom_var = 'livingroom' ; fire_lr = 0 ; ldr_lr = 0
+bedroom_var = 'bedroom' ; fire_bd = 0 ; ldr_bd = 0
+kitchen_var = 'kitchen' ; fire_kc = 0 ; ldr_kt = 0
+bathroom_var = 'bathroom' ; fire_br = 0 ; ldr_br = 0
 
 def get_data():
     ser = serial.Serial('/dev/ttyUSB0', 9600) #define defult serial port 
@@ -29,19 +29,25 @@ def app_gui():
         contact = 'Powered by Python\nDeveloper :\nMr.Sathit Supmek \nMr.Phongsakorn Suttama' #text info
         messagebox.showinfo('About US',contact) #call message box title About us label use in contact variable
     def load_config():
-        fileload = Tk() #define fileload as windows
-        fileload.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("csv file","*.csv"),("all files","*.*"))) #make find file window
+        fileload = filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("csv file","*.csv"),("all files","*.*"))) #make find file window
         # print (fileload.filename)
+    # def save_config():
+    #     csvData = [[livingroom_var,fire_lr,ldr_lr],[bedroom_var,fire_bd,ldr_bd],[kitchen_var,fire_kc,ldr_kt],[bathroom_var,fire_br,ldr_br]] #add data to csv
+    #     with open('config.csv', 'w') as csvFile:
+    #         writer = csv.writer(csvFile)
+    #         writer.writerow(csvData)
+    #     csvFile.close()
+
     def save_config():
-        csvData = None
-        with open('config.csv', 'w') as csvFile:
-            writer = csv.writer(csvFile)
-            writer.writerow(csvData)
-        csvFile.close()
+        filesave = filedialog.asksaveasfile(mode='w', defaultextension=".csv") #error
+        csvData = [[livingroom_var,fire_lr,ldr_lr],[bedroom_var,fire_bd,ldr_bd],[kitchen_var,fire_kc,ldr_kt],[bathroom_var,fire_br,ldr_br]] #add data to csv
+        filesave.write(csvData)
+        filesave.close()
 
     menu = Menu(root) # make munubar
     root.config(menu=menu, bg='#ffffff') #config menubar to call with menu
     fileMenu = Menu(menu, tearoff=0) #create filemenu with fix position
+    fileMenu.add_command(label='Save Config', command=save_config) #add menu to main filemenu
     fileMenu.add_command(label='Load Config', command=load_config) #add menu to main filemenu
     fileMenu.add_command(label='Exit',command=exit) #add menu to main filemenu
     menu.add_cascade(label='File', menu=fileMenu) ##add menu to root window
