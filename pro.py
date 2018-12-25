@@ -30,19 +30,12 @@ def app_gui():
         messagebox.showinfo('About US',contact) #call message box title About us label use in contact variable
     def load_config():
         fileload = filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("csv file","*.csv"),("all files","*.*"))) #make find file window
-        # print (fileload.filename)
-    # def save_config():
-    #     csvData = [[livingroom_var,fire_lr,ldr_lr],[bedroom_var,fire_bd,ldr_bd],[kitchen_var,fire_kc,ldr_kt],[bathroom_var,fire_br,ldr_br]] #add data to csv
-    #     with open('config.csv', 'w') as csvFile:
-    #         writer = csv.writer(csvFile)
-    #         writer.writerow(csvData)
-    #     csvFile.close()
 
     def save_config():
-        filesave = filedialog.asksaveasfile(mode='w', defaultextension=".csv") #error
+        filesave = filedialog.asksaveasfile(mode='w', defaultextension=".csv") #call save function
         csvData = [[livingroom_var,fire_lr,ldr_lr],[bedroom_var,fire_bd,ldr_bd],[kitchen_var,fire_kc,ldr_kt],[bathroom_var,fire_br,ldr_br]] #add data to csv
-        filesave.write(csvData)
-        filesave.close()
+        filesave.write(csvData) #write file from data
+        filesave.close() #close file
 
     menu = Menu(root) # make munubar
     root.config(menu=menu, bg='#ffffff') #config menubar to call with menu
