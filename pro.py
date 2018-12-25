@@ -8,6 +8,8 @@ import serial
 def get_data():
     ser = serial.Serial('/dev/ttyUSB0', 9600)
     value = ser.readline()
+    data = value.split(',')
+    
 
 def app_gui():
     root = Tk()
