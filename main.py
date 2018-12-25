@@ -52,7 +52,6 @@ class Window(Frame):
         tab_control.add(kitchen_room, text='Kitchen')
         tab_control.add(bedroom_room, text='Bedroom')
         tab_control.add(bathroom_room, text='Bathroom')
-        tab_control.add(balcony, text='Balcony')
         tab_control.pack(expand=1, fill='both')
         Button(summary, text="Click Me!").grid()
         
