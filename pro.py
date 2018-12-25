@@ -13,6 +13,7 @@ def app_gui():
     root = Tk()
     root.geometry('800x600')
     root.title('Smart Home :: กลุ่มพ่อบ้านใจกล้า')
+    
     def msgbox():
         contact = 'Powered by Python\nDeveloper :\nMr.Sathit Supmek \nMr.Phongsakorn Suttama'
         messagebox.showinfo('About US',contact)
@@ -20,6 +21,7 @@ def app_gui():
         fileload = Tk()
         fileload.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("csv file","*.csv"),("all files","*.*")))
         print (fileload.filename)
+
     menu = Menu(root)
     root.config(menu=menu, bg='#ffffff')
     fileMenu = Menu(menu, tearoff=0)
