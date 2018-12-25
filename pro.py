@@ -2,15 +2,22 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
-from tkinter import Notebook
+from tkinter.ttk import Notebook
 import time
 import multiprocessing
 import serial
+import csv
+
+#define global variable
+livingroom_var = 0 ; fire_lr = 0 ; ldr_lr = 0
+bedroom_var = 0 ; fire_bd = 0 ; ldr_bd = 0
+kitchen_var = 0 ; fire_kc = 0 ; ldr_kt = 0
+bathroom_var = 0 ; fire_br = 0 ; ldr_br = 0
 
 def get_data():
     ser = serial.Serial('/dev/ttyUSB0', 9600) #define defult serial port 
     value = ser.readline() #read data from serial
-    data = value.split(',') #equal value to data for split with ,
+    data = value.split(',') #equal value to data for split with ','
     
 
 def app_gui():
@@ -25,6 +32,12 @@ def app_gui():
         fileload = Tk() #define fileload as windows
         fileload.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("csv file","*.csv"),("all files","*.*"))) #make find file window
         # print (fileload.filename)
+    def save_config():
+        csvData = None
+        with open('config.csv', 'w') as csvFile:
+            writer = csv.writer(csvFile)
+            writer.writerow(csvData)
+        csvFile.close()
 
     menu = Menu(root) # make munubar
     root.config(menu=menu, bg='#ffffff') #config menubar to call with menu
@@ -49,7 +62,7 @@ def app_gui():
     tab_control.add(living_room, text='Livingroom') #add title living room
     tab_control.add(kitchen_room, text='Kitchen') #add title kitchen
     tab_control.add(bedroom_room, text='Bedroom') #add title bedroom
-    tab_control.add(toilet, text='Bathroom') #add title bathroom
+    tab_control.add(bathroom, text='Bathroom') #add title bathroom
     tab_control.pack(expand=1, fill='both') #add position to pack
 
 
