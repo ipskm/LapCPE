@@ -3,16 +3,17 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
 from tkinter.ttk import Notebook
+from tkinter.ttk import Progressbar
 import time
 import multiprocessing
 import serial
 import csv
 
 #define global variable
-livingroom_var = 'livingroom' ; fire_lr = 0 ; ldr_lr = 0
-bedroom_var = 'bedroom' ; fire_bd = 0 ; ldr_bd = 0
-kitchen_var = 'kitchen' ; fire_kc = 0 ; ldr_kt = 0
-bathroom_var = 'bathroom' ; fire_br = 0 ; ldr_br = 0
+livingroom_var = 'Livingroom' ; fire_lr = 0
+bedroom_var = 'bedroom' ; fire_bd = 0
+kitchen_var = 'kitchen' ; fire_kc = 0
+bathroom_var = 'bathroom' ; fire_br = 0 
 
 def get_data():
     ser = serial.Serial('/dev/ttyUSB0', 9600) #define defult serial port 
@@ -22,7 +23,7 @@ def get_data():
 
 def app_gui():
     root = Tk() #main window
-    root.geometry('600x400') #resolution
+    # root.geometry('600x400') #resolution
     root.title('Smart Home :: กลุ่มพ่อบ้านใจกล้า') #title name
     
     def msgbox():
@@ -33,7 +34,7 @@ def app_gui():
 
     def save_config():
         filesave = filedialog.asksaveasfile(mode='w', defaultextension=".csv") #call save function
-        csvData = [[livingroom_var,fire_lr,ldr_lr],[bedroom_var,fire_bd,ldr_bd],[kitchen_var,fire_kc,ldr_kt],[bathroom_var,fire_br,ldr_br]] #add data to csv
+        csvData = [[livingroom_var,fire_lr],[bedroom_var,fire_bd],[kitchen_var,fire_kc],[bathroom_var,fire_br]] #add data to csv
         filesave.write(csvData) #write file from data
         filesave.close() #close file
 
@@ -64,7 +65,10 @@ def app_gui():
     tab_control.add(bathroom, text='Bathroom') #add title bathroom
     tab_control.pack(expand=1, fill='both') #add position to pack
 
-    Label(summary, text=livingroom_var, font='Arial 16').grid()
+    Label(summary, text=livingroom_var, font='Arial 16').grid(row=0, column=1)
+    Label(summary, text=' Fire Sensor Value : ', font='Arial 16',fg='red').grid(row=0, column=2)
+    Label(summary, text=fire_lr, font='Arial 16').grid(row=0, column=4)
+    Progressbar(summary, orient="horizontal", length=100, mode="determinate").grid(row=0, column=3)
 
 
     root.mainloop() #show root window
