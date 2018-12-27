@@ -19,6 +19,10 @@ def get_data():
     ser = serial.Serial('/dev/ttyUSB0', 9600) #define defult serial port 
     value = ser.readline() #read data from serial
     data = value.split(',') #equal value to data for split with ','
+    fire_lr = data[0]
+    fire_bd = data[1]
+    fire_kc = data[2]
+    fire_bd = data[3]
     
 
 def app_gui():
