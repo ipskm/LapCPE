@@ -53,23 +53,30 @@ def app_gui():
     
     tab_control = Notebook(root) #add notebook tab
     summary = Frame(tab_control) #add summary frame
-    living_room = Frame(tab_control) #add livingroom frame
-    kitchen_room = Frame(tab_control) #add kitchen frame
-    bedroom_room = Frame(tab_control) #add bedroom frame
-    bathroom = Frame(tab_control) #add bathroom frame
+    # fix_value = Frame(tab_control) #add livingroom frame
 
     tab_control.add(summary, text='Summary') #add title summary
-    tab_control.add(living_room, text='Livingroom') #add title living room
-    tab_control.add(kitchen_room, text='Kitchen') #add title kitchen
-    tab_control.add(bedroom_room, text='Bedroom') #add title bedroom
-    tab_control.add(bathroom, text='Bathroom') #add title bathroom
+    # tab_control.add(fix_value, text='Fix Value') #add title living room
     tab_control.pack(expand=1, fill='both') #add position to pack
 
     Label(summary, text=livingroom_var, font='Arial 16').grid(row=0, column=1)
     Label(summary, text=' Fire Sensor Value : ', font='Arial 16',fg='red').grid(row=0, column=2)
     Label(summary, text=fire_lr, font='Arial 16').grid(row=0, column=4)
     Progressbar(summary, orient="horizontal", length=100, mode="determinate").grid(row=0, column=3)
+    Label(summary, text=bedroom_var, font='Arial 16').grid(row=1, column=1)
+    Label(summary, text=' Fire Sensor Value : ', font='Arial 16',fg='red').grid(row=1, column=2)
+    Label(summary, text=fire_bd, font='Arial 16').grid(row=1, column=4)
+    Progressbar(summary, orient="horizontal", length=100, mode="determinate").grid(row=1, column=3)
+    Label(summary, text=kitchen_var, font='Arial 16').grid(row=2, column=1)
+    Label(summary, text=' Fire Sensor Value : ', font='Arial 16',fg='red').grid(row=2, column=2)
+    Label(summary, text=fire_kc, font='Arial 16').grid(row=2, column=4)
+    Progressbar(summary, orient="horizontal", length=100, mode="determinate").grid(row=2, column=3)
+    Label(summary, text=bathroom_var, font='Arial 16').grid(row=3, column=1)
+    Label(summary, text=' Fire Sensor Value : ', font='Arial 16',fg='red').grid(row=3, column=2)
+    Label(summary, text=fire_br, font='Arial 16').grid(row=3, column=4)
+    Progressbar(summary, orient="horizontal", length=100, mode="determinate").grid(row=3, column=3)
 
+    Button(summary,text='Edit Value Fire Sensor').grid(row=4, column=2)
 
     root.mainloop() #show root window
 

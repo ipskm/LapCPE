@@ -40,6 +40,7 @@ void setup() {
 }
 void loop() {
   int LDR = analogRead(0);
+  Serial.print(LDR+String",")
   living_Room();
   bed_Room();
   kitchen();
