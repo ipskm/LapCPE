@@ -21,22 +21,22 @@ void setup() {
   rtc.begin(); 
 //Serial.println("Approximate your card to the reader...");
 //Serial.println();
-  pinMode(22,OUTPUT);//Living_Room
-  pinMode(3,OUTPUT);//Living_Room
-  pinMode(4,OUTPUT);//Living_Room
-  pinMode(2,INPUT);//Living_Room
-  pinMode(24,OUTPUT);//Bedroom
-  pinMode(23,OUTPUT);//Bedroom
-  pinMode(7,OUTPUT);//Bedroom
-  pinMode(5,INPUT);//Bedroom
-  pinMode(26,OUTPUT);//Kitchen
-  pinMode(11,OUTPUT);//Kitchen
-  pinMode(25,OUTPUT);//Kitchen
-  pinMode(6,INPUT);//Kitchen
-  pinMode(12,OUTPUT);//Toilet
-  pinMode(27,OUTPUT);//Toilet
-  pinMode(28,OUTPUT);//Toilet
-  pinMode(10,INPUT);//Toilet
+  pinMode(22,OUTPUT);//Living_Room #buzzer
+  pinMode(3,OUTPUT);//Living_Room #led
+  pinMode(4,OUTPUT);//Living_Room #????
+  pinMode(2,INPUT);//Living_Room  #pir
+  pinMode(24,OUTPUT);//Bedroom #buzzer
+  pinMode(23,OUTPUT);//Bedroom #led
+  pinMode(7,OUTPUT);//Bedroom #???
+  pinMode(5,INPUT);//Bedroom #pir
+  pinMode(26,OUTPUT);//Kitchen #led
+  pinMode(11,OUTPUT);//Kitchen #???
+  pinMode(25,OUTPUT);//Kitchen #buzzer
+  pinMode(6,INPUT);//Kitchen #pir
+  pinMode(12,OUTPUT);//Toilet #???
+  pinMode(27,OUTPUT);//Toilet #buzzer
+  pinMode(28,OUTPUT);//Toilet #led
+  pinMode(10,INPUT);//Toilet #pir
 }
 void loop() {
   Living_Room();//ห้องนั่งเล่น

@@ -22,7 +22,7 @@ def get_data():
 
 def app_gui():
     root = Tk() #main window
-    root.geometry('800x600') #resolution
+    root.geometry('600x400') #resolution
     root.title('Smart Home :: กลุ่มพ่อบ้านใจกล้า') #title name
     
     def msgbox():
@@ -63,6 +63,8 @@ def app_gui():
     tab_control.add(bedroom_room, text='Bedroom') #add title bedroom
     tab_control.add(bathroom, text='Bathroom') #add title bathroom
     tab_control.pack(expand=1, fill='both') #add position to pack
+
+    Label(summary, text=livingroom_var, font='Arial 16').grid()
 
 
     root.mainloop() #show root window
